@@ -8,7 +8,7 @@ POST requests over HTTPS.
 
 TempoIQ accepts any valid JSON message as an event. In order to write data, you
 will need to know your environment's hostname, as well as an API key and secret.
-All this information can be found on your environment's Connect IQ page. 
+All this information can be found on your environment's Connect IQ page.
 
 * Contents
 {:toc}
@@ -159,6 +159,46 @@ class TempoIQWriterTask extends AsyncTask<String, Void, Boolean> {
         return success;
     }
 }
+
+{% endhighlight %}
+
+### iOS - objective-c
+
+{% highlight objective-c %}
+
+    // Set url and loginString based on your environment and credentials
+    NSString* url = @"https://tempo00.pipelines.tempoiq.com/api/channels/0/event";
+    NSString* loginString = @"admin:a60cb87c0b124129bd753d734506a70f";
+
+    // Construct a dictionary to be sent as event data
+    NSMutableDictionary<NSString*, NSObject*>* eventData = [[NSMutableDictionary<NSString*, NSObject*> alloc] init];
+    [eventData setValue: @"abc123" forKey: @"device_id"];
+    [eventData setValue: [NSNumber numberWithDouble: 109.4] forKey: @"voltage"];
+
+    // Create request object
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL: [[NSURL alloc] initWithString: url]];
+    [request setHTTPMethod: @"POST"];
+    [request addValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
+
+
+    // Construct HTTP Basic Authentication header from our key and secret
+    NSData* loginData = [loginString dataUsingEncoding: NSUTF8StringEncoding];
+    NSString* base64LoginString = [loginData base64EncodedStringWithOptions: 0];
+    [request addValue: [@"Basic " stringByAppendingString: base64LoginString] forHTTPHeaderField: @"Authorization"];
+
+    // Convert eventData to a JSON string and set as the request body
+    @try {
+        NSData* body = [NSJSONSerialization dataWithJSONObject: eventData options: 0 error: nil];
+        [request setHTTPBody: body];
+
+    } @catch(NSException* exn) {
+        NSLog(@"Can't serialize Dictionary as JSON!");
+    }
+
+    // Configure request callback
+    NSURLSession* session = [NSURLSession sharedSession];
+    NSURLSessionDataTask* task = [session dataTaskWithRequest: request];
+    [task resume];   // Finally execute the request
 
 {% endhighlight %}
 
