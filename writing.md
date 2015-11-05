@@ -8,7 +8,7 @@ POST requests over HTTPS.
 
 TempoIQ accepts any valid JSON message as an event. In order to write data, you
 will need to know your environment's hostname, as well as an API key and secret.
-All this information can be found on your environment's Connect IQ page. 
+All this information can be found on your environment's Connect IQ page.
 
 * Contents
 {:toc}
@@ -160,9 +160,11 @@ class TempoIQWriterTask extends AsyncTask<String, Void, Boolean> {
     }
 }
 
+{% endhighlight %}
+
 ### iOS - objective-c
 
-{% highlight objectivec %}
+{% highlight objective-c %}
 
     // Set url and loginString based on your environment and credentials
     NSString* url = @"https://tempo00.pipelines.tempoiq.com/api/channels/0/event";
