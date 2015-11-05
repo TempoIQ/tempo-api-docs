@@ -1,0 +1,1 @@
+## TempoIQ API docs are hosted on [Github Pages](https://tempoiq.github.io/tempo-api-docs/)
