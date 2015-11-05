@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+              <span class="icon-tiq-cog"></span>
+            </button>
+            <a href="{{ site.baseurl }}" class="navbar-brand">&nbsp;</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div id="cl-wrapper">
+      <div class="cl-sidebar">
+        {% include sidebar.html %}
+      </div>
+      <div id="pcont" class="container-fluid">
+        <div class="page-head">
+          <h2>{{ page.title }}</h2>
+        </div>
+        <div class="cl-mcont">
+          <div class="block-flat">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<div class="cl-toggle"><i class="fa fa-bars"></i></div>
+<div class="cl-navblock">
+    <div class="collapse-button"></div>
+    <div class="menu-space">
+        <div class="content">
+            <ul class="cl-vnavigation">
+                {% assign sitepages = site.html_pages | sort: 'title' %}
+                {% for sitepage in sitepages %}
+                    {% if sitepage.title %}
+                    <li
+                        {% if sitepage.url == page.url %}
+                            class="active"
+                        {% endif %}
+                    >
+                        <a href="{{ site.baseurl }}{{ sitepage.url }}">
+                        <span>{{ sitepage.title }}</span></a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

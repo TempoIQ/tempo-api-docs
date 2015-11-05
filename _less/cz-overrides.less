@@ -1,0 +1,81 @@
+@import "variables.less";
+@import "bootstrap/mixins/tab-focus.less";
+@import "bootstrap/utilities.less";
+
+// Reset stupid CZ defaults that make JS required
+body {
+  opacity: 1;
+  margin-left: 0;
+}
+
+p {
+  font-size: 14px;
+}
+
+.cl-mcont {
+  font-size: 14px;
+}
+
+.btn {
+  margin-bottom: 0 !important;
+  &:focus {
+    .tab-focus()
+  }
+}
+
+/** Don't allow content to expand the layout wider than the window **/
+#cl-wrapper {
+  table-layout: fixed;
+}
+
+#pcont {
+  width: 100%
+}
+
+//Ensure icon spacing in the subnav menu
+#sub-menu-nav ul li i {
+  margin-right: 7px;
+}
+
+/** Override CZ navbar style **/
+.navbar {
+  background-color: @navbar-color;
+}
+
+.navbar-default{
+  .navbar-brand {
+    background: url("@{logo-path}") no-repeat 0 11px / auto 30px;
+    width: 150px;
+  }
+}
+
+/** Fix for nesting inline form elements inside other forms **/
+.form-inline .form-group{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.block-flat {
+  .clearfix();
+  position: relative;
+}
+/** Un-hardcode navbar hover color **/
+.navbar-default .navbar-nav > .active {
+  > a, > a:hover, > a:focus{
+    background-color: @nav-link-hover-bg;
+    color: #fff;
+  }
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+  background-color: @nav-link-hover-bg;
+  color: #FFF;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: @nav-link-hover-bg;
+  color: #FFF;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus , .dropdown-submenu:hover > a , .dropdown-menu  li > a:hover {
+  background-color: @nav-link-hover-bg;
+  background-image: none;
+  color:#FFF;
+}
