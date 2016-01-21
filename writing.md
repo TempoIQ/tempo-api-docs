@@ -33,7 +33,7 @@ The bulk write endpoint allows you to send an array of events in a
 single request. Events may specify different timestamps from each other,
 and any events that omit a timestamp will be timestamped as they are received.
 
-**Endpoint**: `POST https://<HOST>/api/channels/0/event`
+**Endpoint**: `POST https://<HOST>/api/channels/0/events`
 
 **Accepts**: JSON object with `events` array
 
